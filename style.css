@@ -1,13 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap');
 
 :root {
-    --white: #ffffff; --black: #000000; --accent: #ff4d00;
-    --grey-light: #f6f6f6; --border: #e5e5e5;
+    --white: #ffffff; 
+    --black: #000000; 
+    --accent: #ff4d00;
+    --grey-light: #f6f6f6; 
+    --border: #e5e5e5;
 }
 
-body.dark-theme { --white: #0a0a0a; --black: #ffffff; --grey-light: #1a1a1a; --border: #333333; }
+body.dark-theme { 
+    --white: #0a0a0a; 
+    --black: #ffffff; 
+    --grey-light: #1a1a1a; 
+    --border: #333333; 
+}
 
-body { margin: 0; background-color: var(--white); color: var(--black); font-family: 'Inter', sans-serif; text-transform: uppercase; transition: 0.3s; overflow-x: hidden; }
+body { 
+    margin: 0; 
+    background-color: var(--white); 
+    color: var(--black); 
+    font-family: 'Inter', sans-serif; 
+    text-transform: uppercase; 
+    transition: background 0.3s, color 0.3s; 
+    overflow-x: hidden; 
+}
 
 /* Navigation */
 .main-nav {
@@ -20,7 +36,7 @@ body { margin: 0; background-color: var(--white); color: var(--black); font-fami
 .nav-links button { background: none; border: none; font-weight: 900; margin-left: 20px; cursor: pointer; color: var(--black); font-size: 0.7rem; }
 
 /* Page Control */
-.page { display: none; opacity: 0; transition: 0.5s; padding-top: 70px; min-height: 100vh; }
+.page { display: none; opacity: 0; transition: opacity 0.4s ease; padding-top: 70px; min-height: 100vh; box-sizing: border-box; }
 .page.active { display: block; opacity: 1; }
 
 /* Hero Section */
@@ -33,84 +49,65 @@ body { margin: 0; background-color: var(--white); color: var(--black); font-fami
 .explore-btn { background: transparent; color: white; border: 2px solid white; padding: 12px 30px; font-weight: 900; cursor: pointer; transition: 0.3s; }
 .explore-btn:hover { background: white; color: black; }
 
-/* Archive Header */
+/* Headers & Controls */
 #main-header { padding: 40px 5%; border-bottom: 2px solid var(--black); }
-.main-logo { font-size: 5rem; font-weight: 900; letter-spacing: -4px; margin: 0; line-height: 1; }
-#search-bar { width: 100%; max-width: 400px; padding: 12px; margin-top: 20px; background: var(--grey-light); border: 1px solid var(--border); color: var(--black); font-weight: 900; }
+.main-logo { font-size: clamp(3rem, 7vw, 5rem); font-weight: 900; letter-spacing: -4px; margin: 0; line-height: 1; }
+#search-bar { width: 100%; max-width: 400px; padding: 12px; margin-top: 20px; background: var(--grey-light); border: 1px solid var(--border); color: var(--black); font-weight: 900; outline: none; }
 
-/* Grid */
+/* Archive Grid */
 .content-container { padding: 40px 5% 120px; }
 .shoe-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 40px; }
 
 .shoe-card { cursor: pointer; position: relative; }
-.image-container { background: var(--grey-light); height: 320px; display: flex; align-items: center; justify-content: center; border-radius: 4px; position: relative; }
-.image-container img { width: 80%; transition: 0.5s ease; }
+.image-container { background: var(--grey-light); height: 320px; display: flex; align-items: center; justify-content: center; border-radius: 4px; position: relative; overflow: hidden; }
+.image-container img { width: 80%; transition: transform 0.5s ease; }
 .shoe-card:hover img { transform: scale(1.1) rotate(-5deg); }
 
-.fav-btn, .comp-btn { position: absolute; top: 15px; background: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; z-index: 10; font-weight: 900; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-.fav-btn { left: 15px; color: #ff0000; }
-.comp-btn { right: 15px; font-size: 0.7rem; }
+/* Interface Action Buttons */
+.fav-btn, .comp-btn { position: absolute; top: 15px; background: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; z-index: 10; font-weight: 900; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; }
+.fav-btn { left: 15px; color: #ff0000; font-size: 1.2rem; }
+.comp-btn { right: 15px; font-size: 0.7rem; color: #000; }
 .fav-btn.active { background: var(--accent); color: white; }
 .comp-btn.active { background: var(--black); color: white; }
 
-/* Calendar List */
+/* Calendar Section */
 .calendar-vertical-list { max-width: 900px; margin: 0 auto; }
 .calendar-item { display: flex; align-items: center; gap: 40px; padding: 30px 0; border-bottom: 1px solid var(--border); position: relative; }
 .calendar-date { font-weight: 900; font-size: 2.5rem; color: var(--accent); min-width: 120px; text-align: center; line-height: 0.8; }
-.drop-tag { position: absolute; top: 10px; right: 0; background: var(--accent); color: white; font-size: 0.6rem; padding: 5px 10px; font-weight: 900; }
+.drop-tag { position: absolute; bottom: 0; left: 0; width: 100%; background: var(--accent); color: white; font-size: 0.6rem; padding: 5px 0; text-align: center; font-weight: 900; }
 
-/* Compare Tray */
-.compare-tray { position: fixed; bottom: -100px; left: 0; width: 100%; height: 80px; background: var(--black); color: white; transition: 0.4s; z-index: 2000; display: flex; align-items: center; justify-content: center; }
+/* Compare Dock Tray */
+.compare-tray { position: fixed; bottom: -100px; left: 0; width: 100%; height: 80px; background: var(--black); color: white; transition: bottom 0.4s cubic-bezier(0.1, 1, 0.1, 1); z-index: 2000; display: flex; align-items: center; justify-content: center; }
 .compare-tray.active { bottom: 0; }
 .compare-slots { display: flex; gap: 10px; margin-right: 20px; }
-.slot-img { width: 50px; height: 50px; background: #222; border-radius: 4px; overflow: hidden; }
+.slot-img { width: 50px; height: 50px; background: #222; border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.slot-img img { width: 90%; }
 
-/* Modals */
-.modal-overlay { display: none; position: fixed; inset: 0; background: var(--white); z-index: 9999; overflow-y: auto; padding: 80px 5%; }
-.modal-close { position: fixed; top: 20px; left: 5%; background: var(--black); color: var(--white); border: none; padding: 12px 24px; font-weight: 900; cursor: pointer; z-index: 10001; }
-.modal-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 60px; max-width: 1200px; margin: 0 auto; }
-.compare-grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); }
-.compare-col { background: var(--white); padding: 40px; text-align: center; }
-/* ... [Keep all previous CSS] ... */
-
-.modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    /* This creates the 'not clear' background effect */
+/* HEAVILY BLURRED MODAL OVERLAY (Hides Background Completely) */
+.modal-overlay { 
+    display: none; 
+    position: fixed; 
+    inset: 0; 
     background: rgba(0, 0, 0, 0.85); 
     backdrop-filter: blur(15px); 
-    -webkit-backdrop-filter: blur(15px);
-    z-index: 9999;
-    overflow-y: auto;
-    padding: 80px 5%;
+    -webkit-backdrop-filter: blur(15px); 
+    z-index: 9999; 
+    overflow-y: auto; 
+    padding: 80px 5%; 
 }
+.modal-close { position: fixed; top: 20px; left: 5%; background: var(--accent); color: white; border: none; padding: 12px 24px; font-weight: 900; cursor: pointer; z-index: 10001; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.modal-window { max-width: 1100px; margin: 40px auto; background: var(--white); padding: 40px; border-radius: 8px; box-sizing: border-box; }
+.modal-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: center; }
 
-.modal-window {
-    max-width: 1100px;
-    margin: 0 auto;
-    background: var(--white);
-    padding: 40px;
-    border-radius: 8px;
-    animation: modalSlide 0.4s ease-out;
-}
+/* Head to Head Comparison Display */
+.compare-grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); border-radius: 4px; overflow: hidden; }
+.compare-col { background: var(--white); padding: 40px; text-align: center; box-sizing: border-box; }
+.compare-col img { width: 100%; max-width: 300px; }
 
-@keyframes modalSlide {
-    from { transform: translateY(50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-/* Ensure the back button stays visible over the blur */
-.modal-close {
-    position: fixed;
-    top: 20px;
-    left: 5%;
-    background: var(--accent);
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    font-weight: 900;
-    cursor: pointer;
-    z-index: 10001;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+@media (max-width: 768px) {
+    .hero-content { grid-template-columns: 1fr; text-align: center; }
+    .hero-img { order: -1; }
+    .calendar-item { flex-direction: column; text-align: center; gap: 15px; }
+    .calendar-item button { margin: 0 auto !important; }
+    .compare-grid-layout { grid-template-columns: 1fr; }
 }
